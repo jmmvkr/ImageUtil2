@@ -1,0 +1,16 @@
+﻿<Application x:Class="ImageUtil2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ImageUtil2"
+             StartupUri="MainWindow.xaml" DispatcherUnhandledException="Application_DispatcherUnhandledException">
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="fgBorderColor" Color="#abf" />
+        <SolidColorBrush x:Key="fgBorderSplit" Color="#ddd" />
+        <SolidColorBrush x:Key="fgBorderMerge" Color="#000" />
+        <SolidColorBrush x:Key="bgDropNone" Color="#fff" />
+        <SolidColorBrush x:Key="bgDroping" Color="#abf" />
+        <SolidColorBrush x:Key="bgFolderBlock" Color="#def" />
+    </Application.Resources>
+
+</Application>

@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ImageUtil2.ImageDrop"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ImageUtil2"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+
+    <Border x:Name="xBorder" Margin="3" BorderBrush="{StaticResource fgBorderColor}" BorderThickness="2" CornerRadius="6">
+        <Grid x:Name="spImageDrop" Margin="4" AllowDrop="True" PreviewDragOver="SpImageDrop_PreviewDragOver" DragLeave="SpImageDrop_DragLeave" Drop="SpImageDrop_Drop" Background="{StaticResource bgDropNone}">
+            <Image x:Name="xImageDisplay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <TextBlock x:Name="txtDisplayText" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <TextBlock.RenderTransform>
+                    <TranslateTransform Y="30" />
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
+    </Border>
+
+</UserControl>

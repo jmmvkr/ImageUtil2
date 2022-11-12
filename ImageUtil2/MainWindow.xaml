@@ -1,0 +1,92 @@
+﻿<Window x:Class="ImageUtil2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageUtil2"
+        mc:Ignorable="d"
+        Title="Image Util 2" Height="550" Width="960">
+
+    <Window.Resources>
+        <Style TargetType="local:ImageDrop">
+            <Setter Property="Width" Value="160" />
+            <Setter Property="Height" Value="160" />
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid Margin="10,6,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="107*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="8" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.ColumnSpan="2">
+                <Border BorderBrush="{StaticResource fgBorderColor}" Background="{StaticResource bgFolderBlock}" BorderThickness="1" CornerRadius="6" Margin="0,0,10,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="8" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Path" VerticalAlignment="Center" Margin="12,0,4,0" />
+                        <TextBox Grid.Column="2" x:Name="txtFolder" Padding="6,4" Margin="0,6,8,6" FontSize="14" KeyDown="TextBox_KeyDown" />
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="8" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="320" Margin="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <local:ImageDrop Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" x:Name="xImageOrig" LineColor="{StaticResource fgBorderSplit}" OnImageDrop="XImageOrig_OnImageDrop" MouseDown="XImageOrig_MouseDown" />
+                    <local:ImageSplitFigure Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="-4,0,-4,0" LineColor="{StaticResource fgBorderColor}" />
+                    <local:ImageDrop Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" x:Name="xImageAlpha" LineColor="{StaticResource fgBorderColor}" OnImageDrop="XImageAlpha_OnImageDrop" MouseDown="XImageAlpha_MouseDown" />
+                    <local:ImageDrop Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" x:Name="xImageRgb" LineColor="{StaticResource fgBorderColor}" OnImageDrop="XImageRgb_OnImageDrop" MouseDown="XImageRgb_MouseDown" />
+                    <local:ImageSplitFigure Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" LineColor="{StaticResource fgBorderMerge}" Margin="-4,0,-4,0" Merge="True" />
+                    <local:ImageDrop Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" x:Name="xImageMerge" LineColor="{StaticResource fgBorderMerge}" MouseDown="XImageMerge_MouseDown" />
+                </Grid>
+                <GroupBox Grid.Column="2" Margin="10" MinWidth="200" MaxWidth="300">
+                    <GroupBox.Header>
+                        <TextBlock Text="Image Listing" Margin="6,0" />
+                    </GroupBox.Header>
+                    <ListView x:Name="xListFiles" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Visible" Padding="4" SelectionChanged="XListFiles_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" MinHeight="24">
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Padding="4,0" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </GroupBox>
+            </Grid>
+        </Grid>
+        <Grid x:Name="spOverlay" Grid.ColumnSpan="2" Grid.RowSpan="3" Background="#f00" Visibility="Hidden" MouseDown="SpOverlay_MouseDown">
+            <Image x:Name="imgOverlay" Margin="1" />
+        </Grid>
+    </Grid>
+
+
+</Window>
