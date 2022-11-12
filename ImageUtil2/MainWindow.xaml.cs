@@ -202,13 +202,13 @@ namespace ImageUtil2
             xImageOrig.ImageHolder.Source = bi;
 
             var wrAlpha = getOrCreateWriteable(ref _wrAlpha, bi);
-            var wrRgb = getOrCreateWriteable(ref _wrRgb, bi);
             if (null != wrAlpha)
             {
                 pixelsAlpha.copyAlphaAsRgb(src);
                 showImagePixels(pixelsAlpha, wrAlpha, xImageAlpha.ImageHolder);
             }
-            if (null != wrAlpha)
+            var wrRgb = getOrCreateWriteable(ref _wrRgb, bi);
+            if (null != wrRgb)
             {
                 pixelsRgb.copyRgb(src);
                 showImagePixels(pixelsRgb, wrRgb, xImageRgb.ImageHolder);
