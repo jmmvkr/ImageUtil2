@@ -72,6 +72,13 @@ namespace ImageUtil2
             {
                 Directory.CreateDirectory(dirOut);
             }
+
+            // [to DDS]
+            // texconv.exe -m 1 -srgb -ft DDS -f BC7_UNORM_SRGB mod.png
+
+            // [from DDS]
+            // texconv.exe -ft PNG -y
+
             pr.args = ab.append("-ft PNG -y -o").append(dirOut).appendQuoted(pth).export();
             pr.fileName = "texconv.exe";
             pr.redirectStandardOutput = true;
